@@ -13,7 +13,7 @@ const productSchema = new Schema({
     },
     description: {
         type: String,
-        required
+        required: true
     }
     
 
@@ -22,6 +22,6 @@ const productSchema = new Schema({
     timestamps: true
 })
 
-const Product = mongoose.model('Product', taskSchema)
+const Product = mongoose.model('Product', productSchema)
 
 module.exports = Product

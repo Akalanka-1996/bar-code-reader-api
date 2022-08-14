@@ -1,5 +1,3 @@
-
-
 const express = require('express')
 const dotenv = require('dotenv')
 const cors = require('cors')
@@ -20,11 +18,10 @@ app.use(morgan('tiny'))
 connectDB()
 
 // load routes
-// const userRouter = require('./routes/users')
-// const taskRouter = require('./routes/tasks')
+const productRouter = require('./routes/product')
 
-// app.use('/api/users', userRouter)
-// app.use('/api/tasks', taskRouter)
+app.use('/api/products', productRouter)
+
 
 app.listen(PORT, ()=>{
     console.log(`Server is running on port:${PORT}`)
