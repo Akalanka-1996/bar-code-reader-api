@@ -7,6 +7,21 @@ const Product = require('../models/product.model')
      res.json(products)
  })
 
+ // get product by productId
+
+ const getProductByProductId = asyncHandler(async (req, res) => {
+     const product = await Product.findOne({' productId': req.params.productId})
+
+    //  console.log(req.params.productId)
+
+     if(product) {
+         res.json(product)
+     } else{
+         res.status(400).json({message: "Product not found"})
+     }
+
+ })
+
  // create a product
 
  const createProduct = asyncHandler(async (req, res) => {
@@ -30,4 +45,4 @@ const Product = require('../models/product.model')
 
  })
 
- module.exports = {getProducts, createProduct}
+ module.exports = {getProducts, createProduct, getProductByProductId}
