@@ -7,4 +7,27 @@ const Product = require('../models/product.model')
      res.json(products)
  })
 
- module.exports = {getProducts}
+ // create a product
+
+ const createProduct = asyncHandler(async (req, res) => {
+     const {productId, name, description} = req.body
+
+     if (!productId || !name || !description) {
+        res.status(400)
+        throw new Error("Please fill all the fields")
+     } else {
+         const product = new Product({
+             productId,
+             name,
+             description
+         })
+
+         const createdProduct = await product.save()
+
+         res.status(201).json(createdProduct)
+     }
+
+
+ })
+
+ module.exports = {getProducts, createProduct}
